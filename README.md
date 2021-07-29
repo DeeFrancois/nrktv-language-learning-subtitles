@@ -31,3 +31,5 @@ We had the same idea but used different executions so definitely check his out a
 (Since his is open source as well, I may be able to just contribute my customization options to his project) 
 
 Also, the show from the above images is Side om Side. It's available for free without needing a VPN. 
+
+Licensed under the [MIT License] (LICENSE).
