@@ -10,7 +10,8 @@ I've been learning Norwegian and thought it would be helpful if NRK TV had a dua
 
 ### How to Use:
 
-Once installed, all you have to do is make sure your browser's auto-translation feature is activated. 
+Once installed, all you have to do is make sure your browser's auto-translation feature is activated. You can set it to Always Translate Norwegian by clicking those 3 dots. 
+<sup><sup> I don't like to use the "Always Translate" mode though because you get less of that immersion factor when browsing the main site</sup></sup>
 
 ![demo](https://github.com/DeeFrancois/nrktv-language-learning-subtitles/blob/master/ReadmeImages/activatetranslation.gif) 
 
