@@ -32,4 +32,4 @@ We had the same idea but used different executions so definitely check his out a
 
 Also, the show from the above images is Side om Side. It's available for free without needing a VPN. 
 
-Licensed under the [MIT License] (LICENSE).
+Licensed under the [MIT License](LICENSE).
