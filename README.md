@@ -17,9 +17,9 @@ Once installed, all you have to do is make sure your browser's auto-translation 
 ### Current Customization Options:
 
 - Text Size (can change with both the slider and the buttons added to the player)
-- Translated Text Opacity
-- Translated Text Color (also changes the color of the added buttons.. because it looks cool) 
-- Translated Text Position (Left v Right)
+- Text Opacity
+- Text Color (also changes the color of the added buttons.. because it looks cool) 
+- Text Position (Left v Right)
 
 ![demo](https://github.com/DeeFrancois/nrktv-language-learning-subtitles/blob/master/ReadmeImages/settings.gif)
 
