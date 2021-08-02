@@ -14,13 +14,13 @@
     },
   
     "permissions": [
-        "activeTab", "storage"
+        "storage"
       ],
 
     "content_scripts": [
         {
             "matches": [
-                "*://*.tv.nrk.no/*"
+                "https://tv.nrk.no/*"
             ],
             "js": ["jquery-3.5.1.min.js","content.js"]
         }
