@@ -27,7 +27,7 @@ Once installed, all you have to do is make sure your browser's auto-translation 
 
 #### Sidenote:
 
-When I first made this for myself there no were available extensions that provided this functionality. Since then, [link him here] has done some great work with providing his own extension that does the same thing. 
+When I first made this for myself there no were available extensions that provided this functionality. Since then, Github user Rioam2 has done some great work with providing his own extension that does the same thing. 
 We had the same idea but used different executions so definitely check his out as well and see if that works better for you! 
 (Since his is open source as well, I may be able to just contribute my customization options to his project) 
 
