@@ -1,4 +1,6 @@
-# nrktv-language-learning-subtitles
+# NRKTV Language Learning Subtitles
+[Available here on the Chrome Extension Store](https://chrome.google.com/webstore/detail/nrk-tv-language-learning/lmjfcijpnghdkpnoakgljodpjnimbakp?hl=en)
+
 Enables Dual Subtitles for NRK TV by utilizing the browser's built-in auto-translation feature.
 
 ![demo](https://github.com/DeeFrancois/nrktv-language-learning-subtitles/blob/master/ReadmeImages/demo.gif)
