@@ -35,13 +35,13 @@ function getSetting(setting){ //Pulling Settings from storage into global variab
             if(!window.on_off){
              
                 document.getElementsByName("llsubsb2")[0].style.display='none';
-                document.getElementsByName("llsubsb2")[0].style.display='none';
+                document.getElementsByName("llsubsb1")[0].style.display='none';
 
             }
             else{
 
                 document.getElementsByName("llsubsb2")[0].style.display='block';
-                document.getElementsByName("llsubsb2")[0].style.display='block';
+                document.getElementsByName("llsubsb1")[0].style.display='block';
 
             }
         }
