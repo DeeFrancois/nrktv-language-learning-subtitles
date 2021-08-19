@@ -2,6 +2,12 @@
 
 document.addEventListener('DOMContentLoaded',function(){ //Just adding buttons and their respective listeners. Button presses send messages to background.js
 
+    window.addEventListener('click',function(e){
+        if(e.target.href!==undefined){
+          chrome.tabs.create({url:e.target.href})
+        }
+      })
+      
     var slider = document.getElementById('mySlider');
     var slideValue = document.getElementById('mySliderValue');
     var sideSlider = document.getElementById('sideSlider');
