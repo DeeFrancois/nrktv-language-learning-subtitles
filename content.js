@@ -220,7 +220,7 @@ function update_style(setting){ //This just applies stored values to current ons
         for (var i = 0; i<lines.length;i++){
             if(!window.on_off){
                 
-                if(window.left_or_right===0){
+                if(window.left_or_right==0){
                     lines[i].children[1].style["display"]='none'; 
                 }
                 else{
@@ -281,7 +281,7 @@ function update_style(setting){ //This just applies stored values to current ons
 
         for (var i = 0; i<lines.length;i++){
 
-            lines[i].appendChild(lines[i].children[0]) //This is a bit hacky.. The issue is when you click the Reset Settings button it flips even when text_side is default value (but just for current onscreen subtitles).. i'll fix it soon enough
+            lines[i].appendChild(lines[i].children[0]); //This is a bit hacky.. The issue is when you click the Reset Settings button it flips even when text_side is default value (but just for current onscreen subtitles).. i'll fix it soon enough
 
         }
     }
@@ -312,8 +312,10 @@ chrome.runtime.onMessage.addListener( //Listens for messages sent from backgroun
         }
 
         if (request.message ==='update_text_side'){
-            window.left_or_right=parseInt(request.value); 
-            update_style('text_side');
+            if (window.left_or_right != parseInt(request.value)){
+                window.left_or_right=parseInt(request.value);
+                update_style('text_side');
+            }
         }
 
         if (request.message ==='update_text_color'){
