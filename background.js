@@ -33,7 +33,7 @@ chrome.storage.sync.get('text_color', function(data){
     //console.log("No Color Preference Found - Setting YELLOW");
     chrome.storage.sync.set({'text_color': '#FFFF00'});
   }
-})
+});
 
 chrome.storage.sync.get('opacity', function(data){
   if(data.opacity){
@@ -43,7 +43,17 @@ chrome.storage.sync.get('opacity', function(data){
     //console.log("No Opacity Preference Found - Setting to 1");
     chrome.storage.sync.set({'opacity': 1});
   }
-})
+});
+
+chrome.storage.sync.get('on_off', function(data){
+  if(data.on_off!=null){
+    //console.log("Preferences: Opacity : " + data.text_color);
+  }
+  else{
+    //console.log("No Opacity Preference Found - Setting to 1");
+    chrome.storage.sync.set({'on_off': 1});
+  }
+});
 
 
 // Called when the user clicks on the browser action.
@@ -59,6 +69,19 @@ chrome.browserAction.onClicked.addListener(function(tab) {
 //Handles Messages sent to Background.js, typically for changing User Preference variables
 chrome.runtime.onMessage.addListener(
     function(request, sender, sendResponse) {
+
+      if( request.message === "update_on_off" ) 
+      {
+
+        chrome.storage.sync.set({'on_off':request.value});           //Store into local variables
+        
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs){ //Pass message onto Content.js
+          chrome.tabs.sendMessage(tabs[0].id, {
+            "message":"update_on_off",
+            "value":request.value});
+        });
+
+      }
 
       if( request.message === "update_font_multiplier" ) //Recieved message from SLIDER to update FONT MULTIPLIER to REQUEST.VALUE
       {

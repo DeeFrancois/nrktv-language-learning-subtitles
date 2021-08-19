@@ -30,7 +30,23 @@ function getSetting(setting){ //Pulling Settings from storage into global variab
     var value;
     chrome.storage.sync.get(setting,function(data){
         
-        if (setting === "font_multiplier"){
+        if (setting ==="on_off"){
+            window.on_off = data[setting];
+            if(!window.on_off){
+             
+                document.getElementsByName("llsubsb2")[0].style.display='none';
+                document.getElementsByName("llsubsb2")[0].style.display='none';
+
+            }
+            else{
+
+                document.getElementsByName("llsubsb2")[0].style.display='block';
+                document.getElementsByName("llsubsb2")[0].style.display='block';
+
+            }
+        }
+        
+        else if (setting === "font_multiplier"){
 
             window.current_multiplier = parseFloat(data[setting]);
             window.current_size = window.baseFont*window.current_multiplier+'px';
@@ -69,7 +85,8 @@ waitForElement("div.ludo-captions").then(function(element) {
     getSetting('font_multiplier');
     getSetting('left_or_right');
     getSetting('text_color');
-    getSetting('opacity')
+    getSetting('opacity');
+    getSetting('on_off');
 
     llsubs(); //Run Main Script
 
@@ -144,7 +161,7 @@ function llsubs(){
 
 const addSubs = function(caption_row){
 
-    if(caption_row.firstChild!=null){ // Ensures Subs were added rather than removed
+    if(caption_row.firstChild!=null && window.on_off){ // Ensures Subs were added rather than removed
 
         const child_count = caption_row.childElementCount; // Get row count
         var children = caption_row.childNodes; //Get the subtitle rows
@@ -199,6 +216,20 @@ function update_style(setting){ //This just applies stored values to current ons
     
     const lines = document.getElementsByClassName("ludo-captions__line");
 
+    if (setting === "on_off"){
+        for (var i = 0; i<lines.length;i++){
+            if(!window.on_off){
+                
+                if(window.left_or_right===0){
+                    lines[i].children[1].style["display"]='none'; 
+                }
+                else{
+                    lines[i].children[0].style["display"]='none';
+                }
+
+            }
+        }
+    }
     if (setting === 'font_size'){
 
         for (var i = 0; i<lines.length;i++){
@@ -260,7 +291,20 @@ function update_style(setting){ //This just applies stored values to current ons
 
 chrome.runtime.onMessage.addListener( //Listens for messages sent from background script (Settings Controller)
     function (request, sendRespone, sendResponse){
-        
+        if (request.message === "update_on_off"){
+            window.on_off = request.value;
+            if(!window.on_off){
+                document.getElementsByName("llsubsb2")[0].style.display='none';
+                document.getElementsByName("llsubsb1")[0].style.display='none';
+
+            }
+            else{
+                document.getElementsByName("llsubsb2")[0].style.display='block';
+                document.getElementsByName("llsubsb1")[0].style.display='block';
+            }
+            update_style('on_off');
+        }
+
         if (request.message==='update_font_multiplier'){ //Recieved message from BACKGROUND.JS to change FONT MULTIPLIER to REQUEST.VALUE
             window.current_multiplier=parseFloat(request.value);
             window.current_size=window.baseFont*request.value+'px'

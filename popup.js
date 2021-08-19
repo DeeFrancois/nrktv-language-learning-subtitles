@@ -10,6 +10,7 @@ document.addEventListener('DOMContentLoaded',function(){ //Just adding buttons a
     var opacitySliderValue = document.getElementById('opacitySliderValue');
     var colorPicker = document.getElementById('myColorPicker');
     var resetButton = document.getElementById('resetButton');
+    var onSwitch = document.getElementById("switchValue");
 
     chrome.storage.sync.get('font_multiplier',function(data){ //Change slider positions to the stored values
 
@@ -35,6 +36,12 @@ document.addEventListener('DOMContentLoaded',function(){ //Just adding buttons a
     chrome.storage.sync.get('text_color',function(data){
 
         colorPicker.value=data.text_color;
+
+    });
+
+    chrome.storage.sync.get('on_off',function(data){
+        console.log("Stored value is: ",data.on_off);
+        onSwitch.checked=data.on_off;
 
     });
 
@@ -80,6 +87,17 @@ document.addEventListener('DOMContentLoaded',function(){ //Just adding buttons a
             "message": "update_text_color",
             "value": this.value
         });
+    }, false);
+
+    onSwitch.addEventListener('change',function() {
+
+        //chrome.storage.sync.set({"left_or_right":this.value});
+       chrome.runtime.sendMessage({
+           "message":"update_on_off",
+           "value": this.checked
+       });
+        
+
     }, false);
 
     resetButton.addEventListener('click',function() {
